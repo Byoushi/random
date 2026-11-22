@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review Carousel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    button {
+      font-size: 18px;
+      padding: 8px 16px;
+      margin: 5px;
+    }
+    #review {
+      border: 1px solid black;
+      width: 300px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Review Carousel</h1>
+  <div id="review">
+    <p id="text"></p>
+    <h3 id="name"></h3>
+  </div>
+  <button onclick="prev()">Prev</button>
+  <button onclick="next()">Next</button>
+
+  <script>
+    let reviews = [
+      { name: "Bat", text: "Very good product, I like it." },
+      { name: "Sara", text: "Fast delivery and nice service." },
+      { name: "Bold", text: "Not bad, but could be cheaper." },
+      { name: "Nomin", text: "I will buy again!" }
+    ];
+
+    let index = 0;
+    let reviewText = document.getElementById("text");
+    let reviewName = document.getElementById("name");
+
+    function show() {
+      reviewText.innerHTML = reviews[index].text;
+      reviewName.innerHTML = reviews[index].name;
+    }
+
+    function next() {
+      index = index + 1;
+      if (index > reviews.length - 1) {
+        index = 0;
+      }
+      show();
+    }
+
+    function prev() {
+      index = index - 1;
+      if (index < 0) {
+        index = reviews.length - 1;
+      }
+      show();
+    }
+
+    show();
+  </script>
+
+</body>
+</html>
